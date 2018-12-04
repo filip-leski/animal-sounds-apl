@@ -3,26 +3,30 @@
     "publishingInformation": {
       "locales": {
         "en-US": {
-          "summary": "Sample Short Description",
+          "summary": "This skill plays animal sounds and displays animal pictures using APL.",
           "examplePhrases": [
-            "Alexa open hello world",
-            "Alexa tell hello world hello",
-            "Alexa ask hello world say hello"
+            "Alexa, open animal sounds a. p. l.",
+            "Alexa, ask animal sounds a. p. l. for a cat"
           ],
           "name": "animal-sounds-apl",
-          "description": "Sample Full Description"
+          "description": "This skill plays animal sounds and displays animal pictures using APL."
         }
       },
       "isAvailableWorldwide": true,
       "testingInstructions": "Sample Testing Instructions.",
-      "category": "EDUCATION_AND_REFERENCE",
+      "category": "CHILDRENS_EDUCATION_AND_REFERENCE",
       "distributionCountries": []
     },
     "apis": {
       "custom": {
         "endpoint": {
           "sourceDir": "lambda/custom"
-        }
+        },
+        "interfaces": [
+          {
+            "type": "ALEXA_PRESENTATION_APL"
+          }
+        ]
       }
     },
     "manifestVersion": "1.0"
