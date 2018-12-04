@@ -1,38 +1,52 @@
 {
   "interactionModel": {
     "languageModel": {
-      "invocationName": "greeter",
-      "types": [
-
-      ],
+      "invocationName": "animal sounds a. p. l.",
       "intents": [
         {
           "name": "AMAZON.CancelIntent",
-          "samples": [
-
-          ]
+          "samples": []
         },
         {
           "name": "AMAZON.HelpIntent",
-          "samples": [
-
-          ]
+          "samples": []
         },
         {
           "name": "AMAZON.StopIntent",
-          "samples": [
-
-          ]
+          "samples": []
         },
         {
-          "name": "HelloWorldIntent",
+          "name": "AnimalSoundIntent",
           "slots": [
-
+            {
+              "name": "animal",
+              "type": "animals"
+            }
           ],
           "samples": [
-            "hello",
-            "say hello",
-            "say hello world"
+            "{animal}"
+          ]
+        }
+      ],
+      "types": [
+        {
+          "name": "animals",
+          "values": [
+            {
+              "name": {
+                "value": "cat"
+              }
+            },
+            {
+              "name": {
+                "value": "dog"
+              }
+            },
+            {
+              "name": {
+                "value": "cow"
+              }
+            }
           ]
         }
       ]
