@@ -21,11 +21,17 @@
             {
               "name": "animal",
               "type": "animals"
+            },
+            {
+              "name": "article",
+              "type": "articles"
             }
           ],
           "samples": [
             "{animal}",
-            "{animal} sound"
+            "{article} {animal}",
+            "{animal} sound",
+            "{article} {animal} sound"
           ]
         }
       ],
@@ -46,6 +52,26 @@
             {
               "name": {
                 "value": "cow"
+              }
+            }
+          ]
+        },
+        {
+          "name": "articles",
+          "values": [
+            {
+              "name": {
+                "value": "a"
+              }
+            },
+            {
+              "name": {
+                "value": "an"
+              }
+            },
+            {
+              "name": {
+                "value": "the"
               }
             }
           ]
