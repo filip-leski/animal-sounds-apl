@@ -8,27 +8,35 @@ const LaunchRequestHandler = {
     return handlerInput.requestEnvelope.request.type === 'LaunchRequest';
   },
   handle(handlerInput) {
-    const speechText = 'Welcome to the Alexa Skills Kit, you can say hello!';
+    const speechText = 'Welcome to Animal Sounds A. P. L., which animal sound would you like to hear?';
 
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(speechText)
-      .withSimpleCard('Hello World', speechText)
+      .withSimpleCard('Animal Sounds APL', speechText)
       .getResponse();
   },
 };
 
-const HelloWorldIntentHandler = {
+const AnimalSoundIntentHandler = {
   canHandle(handlerInput) {
     return handlerInput.requestEnvelope.request.type === 'IntentRequest'
-      && handlerInput.requestEnvelope.request.intent.name === 'HelloWorldIntent';
+      && handlerInput.requestEnvelope.request.intent.name === 'AnimalSoundIntent';
   },
   handle(handlerInput) {
-    const speechText = 'Hello World!';
+    const animalSounds = {
+      cat: 'meow',
+      dog: 'bark',
+      cow: 'moo'
+    };
+
+    const requestedAnimal = handlerInput.requestEnvelope.request.intent.slots.animal.value;
+    const requestedAnimalSound = animalSounds[requestedAnimal];
+    const speechText = `${requestedAnimal} says ${requestedAnimalSound}`;
 
     return handlerInput.responseBuilder
       .speak(speechText)
-      .withSimpleCard('Hello World', speechText)
+      .withSimpleCard('Animal Sounds APL', speechText)
       .getResponse();
   },
 };
@@ -39,12 +47,12 @@ const HelpIntentHandler = {
       && handlerInput.requestEnvelope.request.intent.name === 'AMAZON.HelpIntent';
   },
   handle(handlerInput) {
-    const speechText = 'You can say hello to me!';
+    const speechText = 'You can ask for an animal sound!';
 
     return handlerInput.responseBuilder
       .speak(speechText)
       .reprompt(speechText)
-      .withSimpleCard('Hello World', speechText)
+      .withSimpleCard('Animal Sounds APL', speechText)
       .getResponse();
   },
 };
@@ -60,7 +68,7 @@ const CancelAndStopIntentHandler = {
 
     return handlerInput.responseBuilder
       .speak(speechText)
-      .withSimpleCard('Hello World', speechText)
+      .withSimpleCard('Animal Sounds APL', speechText)
       .getResponse();
   },
 };
@@ -95,7 +103,7 @@ const skillBuilder = Alexa.SkillBuilders.custom();
 exports.handler = skillBuilder
   .addRequestHandlers(
     LaunchRequestHandler,
-    HelloWorldIntentHandler,
+    AnimalSoundIntentHandler,
     HelpIntentHandler,
     CancelAndStopIntentHandler,
     SessionEndedRequestHandler
