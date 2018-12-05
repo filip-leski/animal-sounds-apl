@@ -24,7 +24,8 @@
             }
           ],
           "samples": [
-            "{animal}"
+            "{animal}",
+            "{animal} sound"
           ]
         }
       ],
