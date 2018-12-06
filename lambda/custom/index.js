@@ -24,14 +24,16 @@ const AnimalSoundIntentHandler = {
       && handlerInput.requestEnvelope.request.intent.name === 'AnimalSoundIntent';
   },
   handle(handlerInput) {
-    const animalSounds = {
-      cat: 'meow',
-      dog: 'bark',
-      cow: 'moo'
+    const animalData = {
+      cat: {sound: 'meow', image: 'https://s3.amazonaws.com/animal-sounds-apl/images/cat.png'},
+      dog: {sound: 'bark', image: 'https://s3.amazonaws.com/animal-sounds-apl/images/dog.png'},
+      cow: {sound: 'mooo', image: 'https://s3.amazonaws.com/animal-sounds-apl/images/cow.png'}
     };
 
     const requestedAnimal = handlerInput.requestEnvelope.request.intent.slots.animal.value;
-    const requestedAnimalSound = animalSounds[requestedAnimal];
+    const requestedAnimalSound = animalData[requestedAnimal].sound;
+    const requestedAnimalImage = animalData[requestedAnimal].image;
+
     const speechText = `${requestedAnimal} says ${requestedAnimalSound}`;
 
     return handlerInput.responseBuilder
