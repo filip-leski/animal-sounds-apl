@@ -34,11 +34,21 @@ const AnimalSoundIntentHandler = {
     const requestedAnimalSound = animalData[requestedAnimal].sound;
     const requestedAnimalImage = animalData[requestedAnimal].image;
 
-    const speechText = `${requestedAnimal} says ${requestedAnimalSound}`;
+    const speechText = `${requestedAnimal.charAt(0).toUpperCase()}${requestedAnimal.slice(1)} says ${requestedAnimalSound}`;
 
     return handlerInput.responseBuilder
       .speak(speechText)
-      .withSimpleCard('Animal Sounds APL', speechText)
+      .addDirective({
+        type: 'Alexa.Presentation.APL.RenderDocument',
+        version: '1.0',
+        document: require('./aplDocuments/animalSound.json'),
+        datasources: {
+          'animalSoundData': {
+            'message': speechText,
+            'image': requestedAnimalImage
+          }
+        }
+      })
       .getResponse();
   },
 };
