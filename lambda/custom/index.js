@@ -34,7 +34,7 @@ const AnimalSoundIntentHandler = {
     const requestedAnimalSound = animalData[requestedAnimal].sound;
     const requestedAnimalImage = animalData[requestedAnimal].image;
 
-    const speechText = `${requestedAnimal.charAt(0).toUpperCase()}${requestedAnimal.slice(1)} says ${requestedAnimalSound}`;
+    const speechText = `${requestedAnimal.charAt(0).toUpperCase()}${requestedAnimal.slice(1)} says ${requestedAnimalSound}!`;
 
     return handlerInput.responseBuilder
       .speak(speechText)
